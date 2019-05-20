@@ -4,11 +4,11 @@
     $_SESSION['typ']="0";
     $_SESSION['logged_in']=false;
     $_SESSION['message']=' ';
-    $mysqli=new mysqli('localhost', 'root', '','pizzerino.sql' );
+    $mysqli=new mysqli('localhost', 'root', '','mydb' );
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         $login=$mysqli->real_escape_string($_POST['login']);
-        $haslo=md5($_POST['password']);
+        $haslo=md5($_POST['haslo']);
         
         $sql = "SELECT * FROM uzytkownicy WHERE login='$login'";
         $result = $mysqli->query( $sql );
@@ -18,10 +18,10 @@
         if ( $haslo== $user['haslo']) {
             $_SESSION['user_id'] = $user['idUzytkownik'];
             $_SESSION['logged_in']=true;
-            if($user['typ']=="1")
+            if($user['typ']=="2")
             {
-                $_SESSION['typ']="1";
-                header("location: admin.php");
+                $_SESSION['typ']="2";
+                header("location: kucharz.php");
             }
             else
             {

@@ -14,8 +14,8 @@ else
 {
 $id=$_SESSION['user_id'];
 
-$mysqli=new mysqli('localhost', 'root', '', 'rezerwacje');
-$result = $mysqli->query("SELECT * FROM uzytkownicy WHERE id_user='$id'"); 
+$mysqli=new mysqli('localhost', 'root', '', 'pizzerino');
+$result = $mysqli->query("SELECT * FROM uzytkownicy WHERE idUzytkownik='$id'"); 
 
 $dane=$result->fetch_assoc();
 $data=$mysqli->real_escape_string(date('YYYY-mm-dd'));
